@@ -15,6 +15,9 @@ gem 'resque'
 
 gem 'devise'
 
+gem 'inherited_resources'
+gem 'responders'
+gem 'has_scope'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -33,6 +36,12 @@ gem 'jquery-rails'
 group :development, :test do
   gem 'pry'
   gem 'rspec-rails'
+end
+
+group :development do
+  # For html2haml
+  gem 'hpricot'
+  gem 'ruby_parser'
 end
 
 group :test do

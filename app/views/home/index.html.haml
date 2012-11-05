@@ -1,0 +1,9 @@
+%h2 My Libraries
+#libraries
+  - if @libraries.blank?
+    %p You have no libraries yet
+    %p TODO: Create a library form to go here
+  - else
+    -@libraries.each do |library|
+      %p.library_name=library.name
+      %p.library_description= library.description
