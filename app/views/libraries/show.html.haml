@@ -1,0 +1,16 @@
+%p#notice= notice
+%p
+  %b Name:
+  = @library.name
+%p
+  %b Owner:
+  = link_to @library.owner.display_name, @library
+%p
+  %b Description:
+  = @library.description
+%p
+  %b Location:
+  = @library.location
+= link_to 'Edit', edit_library_path(@library)
+|
+\#{link_to 'Back', libraries_path}

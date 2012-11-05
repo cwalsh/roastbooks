@@ -1,4 +1,6 @@
 Roastbooks::Application.routes.draw do
+  resources :libraries
+
   devise_for :users
 
   get "home", :to => "home#index"
