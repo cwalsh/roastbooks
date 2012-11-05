@@ -16,3 +16,6 @@
 
 # Ignore editor backup files
 *~
+
+# Rails 3's test directory, I'll use rspec instead
+test
