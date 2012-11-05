@@ -14,3 +14,25 @@
 = link_to 'Edit', edit_library_path(@library)
 |
 \#{link_to 'Back', libraries_path}
+
+#library_books
+  = form_for "", :url => add_book_library_path(@library), :remote => true do |f|
+    =f.label :isbn
+    =f.text_field :isbn
+    =f.submit "Add Book"
+  - @library.books.each do |book|
+    .book_field.title
+      .field_name Title
+      .field_value=book.title
+    .book_field
+      .field_name Authors
+      .field_value=book.authors
+    .book_field
+      .field_name Publisher
+      .field_value=book.publisher
+    .book_field
+      .field_name ISBN
+      .field_value=book.isbn
+    .book_field
+      .field_name ISBN13
+      .field_value=book.isbn13

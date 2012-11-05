@@ -21,6 +21,10 @@ class LibrariesController < ApplicationController
     end
   end
 
+  def add_book
+    current_user.libraries.find(params[:id]).books << Book.find_or_populate_by_isbn(params[:isbn])
+  end
+
 protected
   def begin_of_association_chain
     current_user

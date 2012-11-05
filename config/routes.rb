@@ -1,7 +1,11 @@
 Roastbooks::Application.routes.draw do
   resources :books
 
-  resources :libraries
+  resources :libraries do
+    member do
+      post 'add_book'
+    end
+  end
 
   devise_for :users
 

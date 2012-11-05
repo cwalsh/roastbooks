@@ -19,6 +19,8 @@ gem 'inherited_resources'
 gem 'responders'
 gem 'has_scope'
 
+gem 'nokogiri'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

@@ -224,6 +224,7 @@ DEPENDENCIES
   hpricot
   inherited_resources
   jquery-rails
+  nokogiri
   pg
   pry
   rails (= 3.2.8)
