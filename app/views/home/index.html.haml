@@ -1,9 +1,16 @@
-%h2 My Libraries
-#libraries
-  - if @libraries.blank?
-    %p You have no libraries yet
-    %p TODO: Create a library form to go here
-  - else
-    -@libraries.each do |library|
-      %p.library_name=library.name
-      %p.library_description= library.description
+-if user_signed_in?
+  %h2 My Libraries
+  #libraries
+    - if @libraries.blank?
+      %p You have no libraries yet
+      %p TODO: Create a library form to go here
+    - else
+      -@libraries.each do |library|
+        %p.library_name=library.name
+        %p.library_description= library.description
+-else
+  %h2 Welcome to Roast Books
+  %p 
+    Are you here to 
+    =link_to "roast some books", new_user_registration_path
+    ?
