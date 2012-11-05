@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121105014700) do
+ActiveRecord::Schema.define(:version => 20121105015810) do
+
+  create_table "libraries", :force => true do |t|
+    t.string   "name"
+    t.text     "location"
+    t.text     "description"
+    t.integer  "owner_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "libraries", ["owner_id"], :name => "index_libraries_on_owner_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

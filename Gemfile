@@ -32,13 +32,14 @@ gem 'jquery-rails'
 
 group :development, :test do
   gem 'pry'
+  gem 'rspec-rails'
 end
 
 group :test do
+  gem 'shoulda'
   gem 'rspec'
-  gem 'rspec-rails'
   gem 'cucumber'
-  gem 'cucumber-rails'
+  gem 'cucumber-rails', :require => false
   gem 'database_cleaner'
   gem 'capybara'
   gem 'capybara-webkit'
