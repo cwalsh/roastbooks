@@ -1,4 +1,6 @@
 Roastbooks::Application.routes.draw do
+  resources :books
+
   resources :libraries
 
   devise_for :users
