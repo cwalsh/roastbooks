@@ -81,15 +81,23 @@ GEM
     ffi (1.1.5)
     gherkin (2.11.5)
       json (>= 1.4.6)
+    googlebooks (0.0.6)
+      httparty
     haml (3.1.7)
     has_scope (0.5.1)
     hashr (0.0.22)
     hike (1.2.1)
     hpricot (0.8.6)
+    httparty (0.8.3)
+      multi_json (~> 1.0)
+      multi_xml
     i18n (0.6.1)
     inherited_resources (1.3.1)
       has_scope (~> 0.5.0)
       responders (~> 0.6)
+    isbndb (2.0.1)
+      httparty (~> 0.8.3)
+      rake (~> 0.9.2.2)
     journey (1.0.4)
     jquery-rails (2.1.3)
       railties (>= 3.1.0, < 5.0)
@@ -104,6 +112,7 @@ GEM
     method_source (0.8.1)
     mime-types (1.19)
     multi_json (1.3.7)
+    multi_xml (0.5.1)
     nokogiri (1.5.5)
     orm_adapter (0.4.0)
     pg (0.14.1)
@@ -227,10 +236,12 @@ DEPENDENCIES
   cucumber-rails
   database_cleaner
   devise
+  googlebooks
   haml
   has_scope
   hpricot
   inherited_resources
+  isbndb
   jquery-rails
   nokogiri
   pg
