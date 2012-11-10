@@ -19,6 +19,8 @@ gem 'inherited_resources'
 gem 'responders'
 gem 'has_scope'
 
+gem "active_model_serializers", :git => "git://github.com/josevalim/active_model_serializers.git"
+
 gem 'nokogiri'
 
 # Gems used only for assets and not required

@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/josevalim/active_model_serializers.git
+  revision: 9f5e1b1776b67e2a601b0205fbba705a0cde55e6
+  specs:
+    active_model_serializers (0.5.2)
+      activemodel (>= 3.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -212,6 +219,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_model_serializers!
   capybara
   capybara-webkit
   coffee-rails (~> 3.2.1)

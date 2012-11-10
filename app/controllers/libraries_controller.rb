@@ -1,6 +1,7 @@
 class LibrariesController < ApplicationController
   inherit_resources
   before_filter :authenticate_user!
+  respond_to :json, :only => [:add_book]
 
   def create
     @library = Library.new params[:library]
@@ -22,7 +23,8 @@ class LibrariesController < ApplicationController
   end
 
   def add_book
-    current_user.libraries.find(params[:id]).books << Book.find_or_populate_by_isbn(params[:isbn])
+    @resource = Book.find_or_populate_by_isbn(params[:isbn])
+    current_user.libraries.find(params[:id]).books << @resource
   end
 
 protected

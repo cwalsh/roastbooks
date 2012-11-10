@@ -1,6 +1,7 @@
 class BooksController < ApplicationController
   inherit_resources
   before_filter :authenticate_user!
+  respond_to :html, :json, :xml
 
   def create
     @book = Book.new params[:book]
