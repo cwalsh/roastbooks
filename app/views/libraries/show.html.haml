@@ -15,11 +15,12 @@
 |
 \#{link_to 'Back', libraries_path}
 
-#library_books
-  = form_for "", :url => add_book_library_path(@library), :remote => true do |f|
+#library_books_actions
+  = form_for "", :url => add_book_library_path(@library), :remote => true, :html => {:id => 'add_book_form'} do |f|
     =f.label :isbn
     =f.text_field :isbn
     =f.submit "Add Book"
+#library_books
   - @library.books.each do |book|
     .book_field.title
       .field_name Title
