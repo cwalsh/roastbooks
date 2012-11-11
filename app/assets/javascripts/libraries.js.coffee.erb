@@ -1,0 +1,43 @@
+# Place all the behaviors and hooks related to the matching controller here.
+# All this logic will automatically be available in application.js.
+# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+<% url_helpers = Roastbooks::Application.routes.url_helpers %>
+
+ListCtrl = ($scope, Library) ->
+  $scope.libraries = Library.query()
+CreateCtrl = ($scope, $location, Library) ->
+  $scope.save = ->
+    Library.save $scope.library, (library) ->
+      $location.path "/edit/" + library._id.$oid
+
+EditCtrl = ($scope, $location, $routeParams, Library) ->
+  self = this
+  Library.get
+    id: $routeParams.libraryId
+  , (library) ->
+    self.original = library
+    $scope.library = new Library(self.original)
+
+  $scope.isClean = ->
+    angular.equals self.original, $scope.library
+
+  $scope.destroy = ->
+    self.original.destroy ->
+      $location.path "/list"
+
+
+  $scope.save = ->
+    $scope.library.update ->
+      $location.path "/"
+
+angular.module("library", ["library"]).config ($routeProvider) ->
+  $routeProvider.when("/",
+    controller: ListCtrl
+    templateUrl: "list_template.html"
+  ).when("/edit/:libraryId",
+    controller: EditCtrl
+    templateUrl: "detail_template.html"
+  ).when("/new",
+    controller: CreateCtrl
+    templateUrl: "detail_template.html"
+  ).otherwise redirectTo: "/"

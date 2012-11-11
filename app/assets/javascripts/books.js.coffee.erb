@@ -1,3 +1,7 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+<% url_helpers = Roastbooks::Application.routes.url_helpers %>
+angular.module("books", ["ngResource"]).factory "Library", ($resource) ->
+  Project = $resource("<%= url_helpers.books_path(:format => 'json') %>")
+
