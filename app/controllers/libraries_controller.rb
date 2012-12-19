@@ -23,8 +23,10 @@ class LibrariesController < ApplicationController
   end
 
   def add_book
-    @resource = Book.find_or_populate_by_isbn(params[:isbn])
-    current_user.libraries.find(params[:id]).books << @resource
+    @library = current_user.libraries.find params[:id]
+    @book = Book.find_or_populate_by_isbn(params[:isbn])
+    @library.books << @book unless @library.books.include? @book
+    redirect_to @library
   end
 
 protected
