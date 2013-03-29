@@ -20,7 +20,7 @@ gem 'inherited_resources'
 gem 'responders'
 gem 'has_scope'
 
-gem "active_model_serializers", :git => "git://github.com/rails-api/active_model_serializers.git"
+gem "active_model_serializers"
 
 gem 'nokogiri'
 
