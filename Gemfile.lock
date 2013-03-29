@@ -87,6 +87,11 @@ GEM
     hashr (0.0.22)
     hike (1.2.1)
     hpricot (0.8.6)
+    html2haml (1.0.1)
+      erubis (~> 2.7.0)
+      haml (>= 4.0.0.rc.1)
+      hpricot (~> 0.8.6)
+      ruby_parser (~> 3.1.1)
     httparty (0.8.3)
       multi_json (~> 1.0)
       multi_xml
@@ -253,7 +258,7 @@ DEPENDENCIES
   googlebooks
   haml
   has_scope
-  hpricot
+  html2haml
   inherited_resources
   isbndb
   jquery-rails
@@ -267,7 +272,6 @@ DEPENDENCIES
   resque
   rspec
   rspec-rails
-  ruby_parser
   sass-rails (~> 3.2.3)
   shoulda
   therubyracer

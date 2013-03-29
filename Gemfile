@@ -48,9 +48,7 @@ group :development, :test do
 end
 
 group :development do
-  # For html2haml
-  gem 'hpricot'
-  gem 'ruby_parser'
+  gem 'html2haml'
 end
 
 group :test do
