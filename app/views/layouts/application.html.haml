@@ -37,9 +37,10 @@
     = csrf_meta_tags
   %body
     #login
-      = render :partial => 'layouts/login'
-      %p.notice= notice
-      %p.alert= alert
+      - if notice
+        %p.notice= notice
+      - if alert
+        %p.alert= alert
       .navbar.navbar-inverse.navbar-fixed-top
         .navbar-inner
           .container-fluid
@@ -50,7 +51,7 @@
             %a.brand{:href => "#"} Project name
             .nav-collapse.collapse
               %p.navbar-text.pull-right
-                Logged in as
+                = render :partial => 'layouts/login'
                 %a.navbar-link{:href => "#"} Username
               %ul.nav
                 %li.active
