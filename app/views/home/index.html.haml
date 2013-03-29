@@ -6,7 +6,7 @@
       %p TODO: Create a library form to go here
     - else
       -@libraries.each do |library|
-        %p.library_name=library.name
+        %p.library_name=link_to library.name, library
         %p.library_description= library.description
 -else
   %h2 Welcome to Roast Books
