@@ -2,6 +2,9 @@ Roastbooks::Application.routes.draw do
   resources :books
 
   resources :libraries do
+    collection do
+      get 'all'
+    end
     member do
       post 'add_book'
     end

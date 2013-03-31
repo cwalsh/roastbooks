@@ -1,39 +1,38 @@
-%p#notice= notice
-%p
-  %b Name:
-  = @library.name
-%p
-  %b Owner:
-  = link_to @library.owner.display_name, @library
-%p
-  %b Description:
-  = @library.description
-%p
-  %b Location:
-  = @library.location
-= link_to 'Edit', edit_library_path(@library)
-|
-\#{link_to 'Back', libraries_path}
+-content_for :hero do
+  %h1= @library.name
+  %p
+  %p
+    %b Owned by:
+    =@library.owner.display_name
+  %p
+    %b Description:
+    =@library.description
+  %p
+    %b Location:
+    =@library.location
+  = link_to 'Edit', edit_library_path(@library)
+  |
+  \#{link_to 'Back', libraries_path}
 
-#library_books_actions
+-if current_user.library_ids.include? @library.id
   = form_for "", :url => add_book_library_path(@library), :html => {:id => 'add_book_form'} do |f|
     =f.label :isbn
     =f.text_field :isbn, :autofocus=> "autofocus" 
     =f.submit "Add Book"
-#library_books
-  - @library.books.each do |book|
-    .book_field.title
-      .field_name Title
-      .field_value=book.title
-    .book_field
-      .field_name Authors
-      .field_value=book.authors
-    .book_field
-      .field_name Publisher
-      .field_value=book.publisher
-    .book_field
-      .field_name ISBN
-      .field_value=book.isbn
-    .book_field
-      .field_name ISBN13
-      .field_value=book.isbn13
+- library_books.each_slice(3).each do |row|
+  .row-fluid
+    - row.each do |book|
+      %div{:class => "span#{library_books.size < 3 ? 12/row.size : 4}"}
+        %h3=book.title
+        %p
+          Authors:
+          =book.authors
+        %p
+          Publisher:
+          =book.publisher
+        %p
+          ISBN:
+          =book.isbn
+        %p
+          ISBN13:
+          =book.isbn13

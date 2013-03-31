@@ -48,110 +48,37 @@
               %span.icon-bar
               %span.icon-bar
               %span.icon-bar
-            %a.brand{:href => "#"} Project name
+            =link_to "Roast Books", home_path, :class => 'brand'
             .nav-collapse.collapse
               %p.navbar-text.pull-right
                 = render :partial => 'layouts/login'
-                %a.navbar-link{:href => "#"} Username
               %ul.nav
-                %li.active
-                  %a{:href => "#"} Home
-                %li
-                  %a{:href => "#about"} About
-                %li
-                  %a{:href => "#contact"} Contact
+                %li{:class => 'active'}
+                  =link_to "Home", home_path
             / /.nav-collapse
       .container-fluid
         .row-fluid
           .span3
             .well.sidebar-nav
               %ul.nav.nav-list
-                %li.nav-header Sidebar
-                %li.active
-                  %a{:href => "#"} Link
-                %li
-                  %a{:href => "#"} Link
-                %li
-                  %a{:href => "#"} Link
-                %li
-                  %a{:href => "#"} Link
-                %li.nav-header Sidebar
-                %li
-                  %a{:href => "#"} Link
-                %li
-                  %a{:href => "#"} Link
-                %li
-                  %a{:href => "#"} Link
-                %li
-                  %a{:href => "#"} Link
-                %li
-                  %a{:href => "#"} Link
-                %li
-                  %a{:href => "#"} Link
-                %li.nav-header Sidebar
-                %li
-                  %a{:href => "#"} Link
-                %li
-                  %a{:href => "#"} Link
-                %li
-                  %a{:href => "#"} Link
+                %li.nav-header Me
+                %li{:class => controller_name == 'home' ? 'active' : nil}
+                  =link_to "Home", home_path
+                %li{:class => (controller_name == 'libraries' && action_name == 'index') ? 'active' : nil}
+                  =link_to "My Libraries", libraries_path
+                %li.nav-header Everybody
+                %li{:class => (controller_name == 'libraries' && action_name == 'all') ? 'active' : nil}
+                  =link_to "All Libraries", all_libraries_path
             / /.well
           / /span
           .span9
+            - if content_for? :hero
+              .hero-unit
+                = yield :hero
             = yield
-            .hero-unit
-              %h1 Hello, world!
-              %p This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.
-              %p
-                %a.btn.btn-primary.btn-large{:href => "#"} Learn more &raquo;
-            .row-fluid
-              .span4
-                %h2 Heading
-                %p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-                %p
-                  %a.btn{:href => "#"} View details &raquo;
-              / /span
-              .span4
-                %h2 Heading
-                %p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-                %p
-                  %a.btn{:href => "#"} View details &raquo;
-              / /span
-              .span4
-                %h2 Heading
-                %p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-                %p
-                  %a.btn{:href => "#"} View details &raquo;
-              / /span
-            / /row
-            .row-fluid
-              .span4
-                %h2 Heading
-                %p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-                %p
-                  %a.btn{:href => "#"} View details &raquo;
-              / /span
-              .span4
-                %h2 Heading
-                %p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-                %p
-                  %a.btn{:href => "#"} View details &raquo;
-              / /span
-              .span4
-                %h2 Heading
-                %p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-                %p
-                  %a.btn{:href => "#"} View details &raquo;
-              / /span
-            / /row
-          / /span
-        / /row
         %hr/
         %footer
-          %p &copy; Company 2013
-      / /.fluid-container
-      /
-        Le javascript
-        \==================================================
-      / Placed at the end of the document so the pages load faster
-      = javascript_include_tag "bootstrap"
+          %p
+            &copy; Cameron Walsh
+            = Date.today.year
+    = javascript_include_tag "bootstrap"

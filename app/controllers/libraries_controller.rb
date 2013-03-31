@@ -29,8 +29,17 @@ class LibrariesController < ApplicationController
     redirect_to @library
   end
 
+  def all
+    @libraries = Library.page params[:page]
+    render :action => :index
+  end
+
 protected
   def begin_of_association_chain
     current_user
   end
+  def library_books
+    @library.books.page params[:page]
+  end
+  helper_method :library_books
 end
