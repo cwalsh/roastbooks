@@ -1,8 +1,8 @@
-%h1 My libraries
+%h1 All  libraries
 #libraries
   - if @libraries.blank?
     %p
-      You have no libraries yet
+      Why has nobody created a single library?
   - else
     -@libraries.each_slice(3) do |row|
       .row-fluid
@@ -16,8 +16,6 @@
             %b Location:
             = library.location
           %p
-            =link_to "Edit", edit_library_path(library), :class => 'btn'
-            =link_to "Delete", edit_library_path(library), :class => 'btn'
             =link_to raw("View Details &raquo;"), library, :class => 'btn'
 .actions
   = link_to 'New Library', new_library_path, :class => 'btn'

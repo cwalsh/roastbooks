@@ -20,12 +20,14 @@ gem 'inherited_resources'
 gem 'responders'
 gem 'has_scope'
 
-gem "active_model_serializers", :git => "git://github.com/rails-api/active_model_serializers.git"
+gem "active_model_serializers"
 
 gem 'nokogiri'
 
 gem 'isbndb'
 gem 'googlebooks'
+
+gem 'kaminari'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -48,9 +50,7 @@ group :development, :test do
 end
 
 group :development do
-  # For html2haml
-  gem 'hpricot'
-  gem 'ruby_parser'
+  gem 'html2haml'
 end
 
 group :test do

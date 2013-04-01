@@ -2,15 +2,22 @@
   %h2 My Libraries
   #libraries
     - if @libraries.blank?
-      %p You have no libraries yet
-      %p TODO: Create a library form to go here
+      %p
+        You have no libraries yet
+        =link_to "Create one", new_library_path
+        ?
     - else
-      -@libraries.each do |library|
-        %p.library_name=library.name
-        %p.library_description= library.description
+      -@libraries.each_slice(3) do |row|
+        .row-fluid
+        -row.each do |library|
+          %div{:class => "span#{@libraries.size < 3 ? 12/row.size : 4}"}
+            %h2.library_name=library.name
+            %p.library_description= library.description
+            %p
+              =link_to raw("View Details &raquo;"), library, :class => 'btn'
 -else
   %h2 Welcome to Roast Books
   %p 
     Are you here to 
-    =link_to "roast some books", new_user_registration_path
+    =link_to "Roast some books", new_user_registration_path
     ?

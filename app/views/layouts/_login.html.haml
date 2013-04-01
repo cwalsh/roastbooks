@@ -1,6 +1,6 @@
 -if user_signed_in?
   ="Welcome, #{current_user.display_name}"
-  = link_to "Sign out", destroy_user_session_path, :method => :delete
+  = link_to "Sign out", destroy_user_session_path, :method => :delete, :class => 'navbar-link'
 -else
   =form_for("user", :url => user_session_path) do |f|
     = f.label :email
