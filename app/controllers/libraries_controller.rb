@@ -31,7 +31,7 @@ class LibrariesController < ApplicationController
 
   def all
     @libraries = Library.page params[:page]
-    render :action => :index
+    render
   end
 
 protected
