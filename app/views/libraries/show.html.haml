@@ -19,6 +19,7 @@
     =f.label :isbn
     =f.text_field :isbn, :autofocus=> "autofocus" 
     =f.submit "Add Book"
+= paginate library_books
 - library_books.each_slice(3).each do |row|
   .row-fluid
     - row.each do |book|
