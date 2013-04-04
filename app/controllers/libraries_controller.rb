@@ -1,6 +1,6 @@
 class LibrariesController < ApplicationController
   inherit_resources
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :except => [:all, :show]
   respond_to :json, :only => [:add_book]
 
   def create
