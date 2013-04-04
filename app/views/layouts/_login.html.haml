@@ -1,13 +1,11 @@
 -if user_signed_in?
-  ="Welcome, #{current_user.display_name}"
-  = link_to "Sign out", destroy_user_session_path, :method => :delete, :class => 'navbar-link'
+  %p.navbar-text.pull-right
+    ="Welcome, #{current_user.display_name}"
+    = link_to "Sign out", destroy_user_session_path, :method => :delete, :class => 'navbar-link'
 -else
-  =form_for("user", :url => user_session_path) do |f|
-    = f.label :email
-    = f.text_field :email
-    = f.label :password
-    = f.password_field :password
-    = f.check_box :remember_me, :checked => "checked"
-    = f.label :remember_me
-    = f.submit 'Sign in'
-    = link_to "Forgot your password?", new_password_path('user')
+  = link_to "Forgot your password?", new_password_path('user'), :class => "navbar-text pull-right"
+  =form_for("user", :url => user_session_path, :html => {:class =>"navbar-form pull-right"}) do |f|
+    = f.text_field :email, :class => "span2", :placeholder => 'email'
+    = f.password_field :password, :class => "span2", :placeholder => 'password'
+    = f.hidden_field :remember_me, :value => true
+    = f.submit 'Sign in', :class => 'btn'

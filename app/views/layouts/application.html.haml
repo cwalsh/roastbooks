@@ -36,49 +36,47 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
-    #login
-      - if notice
-        %p.notice= notice
-      - if alert
-        %p.alert= alert
-      .navbar.navbar-inverse.navbar-fixed-top
-        .navbar-inner
-          .container-fluid
-            %button.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse", :type => "button"}
-              %span.icon-bar
-              %span.icon-bar
-              %span.icon-bar
-            =link_to "Roast Books", home_path, :class => 'brand'
-            .nav-collapse.collapse
-              %p.navbar-text.pull-right
-                = render :partial => 'layouts/login'
-              %ul.nav
-                %li{:class => 'active'}
-                  =link_to "Home", home_path
-            / /.nav-collapse
-      .container-fluid
-        .row-fluid
-          .span3
-            .well.sidebar-nav
-              %ul.nav.nav-list
-                %li.nav-header Me
-                %li{:class => controller_name == 'home' ? 'active' : nil}
-                  =link_to "Home", home_path
-                %li{:class => (controller_name == 'libraries' && action_name == 'index') ? 'active' : nil}
-                  =link_to "My Libraries", libraries_path
-                %li.nav-header Everybody
-                %li{:class => (controller_name == 'libraries' && action_name == 'all') ? 'active' : nil}
-                  =link_to "All Libraries", all_libraries_path
-            / /.well
-          / /span
-          .span9
-            - if content_for? :hero
-              .hero-unit
-                = yield :hero
-            = yield
-        %hr/
-        %footer
-          %p
-            &copy; Cameron Walsh
-            = Date.today.year
+    - if notice
+      %p.notice= notice
+    - if alert
+      %p.alert= alert
+    .navbar.navbar-inverse.navbar-fixed-top
+      .navbar-inner
+        .container-fluid
+          %button.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse", :type => "button"}
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          =link_to "Roast Books", home_path, :class => 'brand'
+          .nav-collapse.collapse
+            %ul.nav
+              %li{:class => 'active'}
+                =link_to "Home", home_path
+            = render :partial => 'layouts/login'
+          / /.nav-collapse
+    .container-fluid
+      .row-fluid
+        .span3
+          .well.sidebar-nav
+            %ul.nav.nav-list
+              %li.nav-header Me
+              %li{:class => controller_name == 'home' ? 'active' : nil}
+                =link_to "Home", home_path
+              %li{:class => (controller_name == 'libraries' && action_name == 'index') ? 'active' : nil}
+                =link_to "My Libraries", libraries_path
+              %li.nav-header Everybody
+              %li{:class => (controller_name == 'libraries' && action_name == 'all') ? 'active' : nil}
+                =link_to "All Libraries", all_libraries_path
+          / /.well
+        / /span
+        .span9
+          - if content_for? :hero
+            .hero-unit
+              = yield :hero
+          = yield
+      %hr/
+      %footer
+        %p
+          &copy; Cameron Walsh
+          = Date.today.year
     = javascript_include_tag "bootstrap"
