@@ -9,6 +9,7 @@ Roastbooks::Application.routes.draw do
       post 'add_book'
     end
   end
+  match 'libraries/:library_id/books/:id/remove' => 'libraries#remove_book', :via => :delete, :as => "remove_library_book"
 
   devise_for :users
 

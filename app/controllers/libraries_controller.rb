@@ -29,6 +29,12 @@ class LibrariesController < ApplicationController
     redirect_to @library
   end
 
+  def remove_book
+    @library = current_user.libraries.find params[:library_id]
+    @library.books.delete @library.books.find(params[:id])
+    redirect_to @library
+  end
+
   def all
     @libraries = Library.page params[:page]
     render
@@ -39,7 +45,7 @@ protected
     current_user
   end
   def library_books
-    @library.books.page params[:page]
+    @library.books.order("id desc").page params[:page]
   end
   helper_method :library_books
 end

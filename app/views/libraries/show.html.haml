@@ -37,3 +37,6 @@
         %p
           ISBN13:
           =book.isbn13
+        - if current_user.library_ids.include? @library.id
+          %p
+            =button_to "Remove", remove_library_book_path(@library,book), :method => :delete, :confirm => "Are you sure you want to remove #{book.title} from your library?", :title => "Remove book from library"
